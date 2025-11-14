@@ -43,24 +43,14 @@ function CustomSelect({ value, onValueChange, placeholder, options }: CustomSele
     <div className="relative" ref={selectRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full h-12 text-white font-medium px-4 rounded-lg border transition-colors flex items-center justify-between"
-        style={{
-          backgroundColor: "#1a1a1b",
-          borderColor: "#2a2a2b",
-        }}
+        className="w-full h-12 text-gray-900 font-medium px-4 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-colors flex items-center justify-between"
       >
         <span>{selectedOption ? selectedOption.label : placeholder}</span>
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       {isOpen && (
-        <div
-          className="absolute top-full left-0 right-0 mt-1 border rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto"
-          style={{
-            backgroundColor: "#0f0f10",
-            borderColor: "#1a1a1b",
-          }}
-        >
+        <div className="absolute top-full left-0 right-0 mt-1 border border-gray-200 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto bg-white">
           {options.map((option) => (
             <button
               key={option.value}
@@ -68,8 +58,7 @@ function CustomSelect({ value, onValueChange, placeholder, options }: CustomSele
                 onValueChange(option.value)
                 setIsOpen(false)
               }}
-              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors first:rounded-t-lg last:rounded-b-lg"
-              style={{ ":hover": { backgroundColor: "#1a1a1b" } }}
+              className="w-full px-4 py-3 text-left text-gray-900 hover:bg-gray-100 transition-colors first:rounded-t-lg last:rounded-b-lg"
             >
               {option.label}
             </button>
@@ -367,12 +356,12 @@ export default function ScootPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="min-h-screen py-8" style={{ backgroundColor: "#0a0a0a" }}>
+    <div className="min-h-screen py-8 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <Link
           href="/scoots"
-          className="inline-flex items-center space-x-2 text-gray-400 hover:text-white transition-colors mb-8"
+          className="inline-flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Назад</span>
@@ -396,7 +385,7 @@ export default function ScootPage({ params }: { params: { id: string } }) {
                   key={index}
                   onClick={() => setSelectedImage(index)}
                   className={`relative aspect-[4/3] rounded-lg overflow-hidden border-2 transition-colors ${
-                    selectedImage === index ? "border-red-600" : "border-gray-700"
+                    selectedImage === index ? "border-red-600" : "border-gray-300"
                   }`}
                 >
                   <Image
@@ -413,56 +402,38 @@ export default function ScootPage({ params }: { params: { id: string } }) {
           {/* Details */}
           <div>
             <div className="mb-6">
-              <span className="text-gray-400 text-sm">{motorcycle.category}</span>
-              <h1 className="font-rubik font-bold text-3xl text-white mb-2">
+              <span className="text-gray-500 text-sm">{motorcycle.category}</span>
+              <h1 className="font-rubik font-bold text-3xl text-gray-900 mb-2">
                 {motorcycle.name}, {motorcycle.year}
               </h1>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-1">
-                  <Gauge className="w-5 h-5 text-white" />
-                  <span className="text-gray-300">{motorcycle.speed}</span>
+                  <Gauge className="w-5 h-5 text-gray-600" />
+                  <span className="text-gray-700">{motorcycle.speed}</span>
                 </div>
                 <div className="flex items-center space-x-1">
-                  <Settings className="w-5 h-5 text-white" />
-                  <span className="text-gray-300">{motorcycle.volume}</span>
+                  <Settings className="w-5 h-5 text-gray-600" />
+                  <span className="text-gray-700">{motorcycle.volume}</span>
                 </div>
               </div>
             </div>
 
             {/* Booking Form */}
-            <div
-              className="rounded-xl p-6 border"
-              style={{
-                backgroundColor: "#0f0f10",
-                borderColor: "#1a1a1b",
-              }}
-            >
-              <h3 className="font-rubik font-bold text-xl text-white mb-4">Забронируйте мотоцикл</h3>
+            <div className="rounded-xl p-6 border border-gray-200 bg-white shadow-sm">
+              <h3 className="font-rubik font-bold text-xl text-gray-900 mb-4">Забронируйте мотоцикл</h3>
 
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="block text-gray-300 text-sm mb-2">Дата получения</Label>
+                    <Label className="block text-gray-700 text-sm mb-2">Дата получения</Label>
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button
-                          className="w-full justify-start border h-12"
-                          style={{
-                            backgroundColor: "#1a1a1b",
-                            borderColor: "#2a2a2b",
-                          }}
-                        >
-                          <Calendar className="w-4 h-4 mr-2" />
+                        <Button className="w-full justify-start border border-gray-300 bg-white hover:bg-gray-50 h-12 text-gray-900">
+                          <Calendar className="w-4 h-4 mr-2 text-gray-600" />
                           {startDate ? format(startDate, "dd.MM.yyyy", { locale: ru }) : "Выберите дату"}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent
-                        className="w-auto p-0 border"
-                        style={{
-                          backgroundColor: "#0f0f10",
-                          borderColor: "#1a1a1b",
-                        }}
-                      >
+                      <PopoverContent className="w-auto p-0 border border-gray-200 bg-white">
                         <CalendarComponent
                           mode="single"
                           selected={startDate}
@@ -470,29 +441,28 @@ export default function ScootPage({ params }: { params: { id: string } }) {
                           initialFocus
                           locale={ru}
                           weekStartsOn={1}
-                          className="text-white"
-                          style={{ backgroundColor: "#0f0f10" }}
+                          className="text-gray-900"
                           classNames={{
                             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
                             month: "space-y-4",
-                            caption: "flex justify-center pt-1 relative items-center text-white",
-                            caption_label: "text-sm font-medium text-white",
+                            caption: "flex justify-center pt-1 relative items-center text-gray-900",
+                            caption_label: "text-sm font-medium text-gray-900",
                             nav: "space-x-1 flex items-center",
-                            nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 text-white",
+                            nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 text-gray-900",
                             nav_button_previous: "absolute left-1",
                             nav_button_next: "absolute right-1",
                             table: "w-full border-collapse space-y-1",
                             head_row: "flex",
-                            head_cell: "text-gray-400 rounded-md w-9 font-normal text-[0.8rem]",
+                            head_cell: "text-gray-500 rounded-md w-9 font-normal text-[0.8rem]",
                             row: "flex w-full mt-2",
-                            cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-gray-700 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-                            day: "h-9 w-9 p-0 font-normal text-white hover:bg-gray-700 hover:text-white rounded-md",
+                            cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-gray-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+                            day: "h-9 w-9 p-0 font-normal text-gray-900 hover:bg-gray-100 hover:text-gray-900 rounded-md",
                             day_selected:
                               "bg-red-600 text-white hover:bg-red-600 hover:text-white focus:bg-red-600 focus:text-white",
-                            day_today: "bg-gray-700 text-white",
-                            day_outside: "text-gray-500 opacity-50",
-                            day_disabled: "text-gray-500 opacity-50",
-                            day_range_middle: "aria-selected:bg-gray-700 aria-selected:text-white",
+                            day_today: "bg-gray-100 text-gray-900",
+                            day_outside: "text-gray-400 opacity-50",
+                            day_disabled: "text-gray-400 opacity-50",
+                            day_range_middle: "aria-selected:bg-gray-100 aria-selected:text-gray-900",
                             day_hidden: "invisible",
                           }}
                         />
@@ -501,7 +471,7 @@ export default function ScootPage({ params }: { params: { id: string } }) {
                   </div>
 
                   <div>
-                    <Label className="block text-gray-300 text-sm mb-2">Время</Label>
+                    <Label className="block text-gray-700 text-sm mb-2">Время</Label>
                     <CustomSelect
                       value={selectedTime}
                       onValueChange={setSelectedTime}
@@ -512,7 +482,7 @@ export default function ScootPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div>
-                  <Label className="block text-gray-300 text-sm mb-2">Выберите тариф</Label>
+                  <Label className="block text-gray-700 text-sm mb-2">Выберите тариф</Label>
                   <CustomSelect
                     value={selectedTariff}
                     onValueChange={setSelectedTariff}
@@ -521,28 +491,28 @@ export default function ScootPage({ params }: { params: { id: string } }) {
                   />
                 </div>
 
-                <div className="rounded-lg p-4" style={{ backgroundColor: "#1a1a1b" }}>
+                <div className="rounded-lg p-4 bg-gray-50 border border-gray-200">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">Шлем:</span>
-                    <span className="text-white">{motorcycle.helmet}</span>
+                    <span className="text-gray-700">Шлем:</span>
+                    <span className="text-gray-900">{motorcycle.helmet}</span>
                   </div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-300">Депозит:</span>
-                    <span className="text-white">{motorcycle.deposit.toLocaleString()} ₸</span>
+                    <span className="text-gray-700">Депозит:</span>
+                    <span className="text-gray-900">{motorcycle.deposit.toLocaleString()} ₸</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Стоимость аренды:</span>
-                    <span className="text-white">
+                    <span className="text-gray-700">Стоимость аренды:</span>
+                    <span className="text-gray-900">
                       {selectedTariff ? motorcycle.pricing[selectedTariff as keyof typeof motorcycle.pricing].price : 0}{" "}
                       ₸
                     </span>
                   </div>
                 </div>
 
-                <div className="border-t pt-4" style={{ borderColor: "#2a2a2b" }}>
+                <div className="border-t border-gray-200 pt-4">
                   <div className="flex justify-between items-center text-lg font-bold">
-                    <span className="text-white">Итого:</span>
-                    <span className="text-white">
+                    <span className="text-gray-900">Итого:</span>
+                    <span className="text-gray-900">
                       {selectedTariff ? motorcycle.pricing[selectedTariff as keyof typeof motorcycle.pricing].price : 0}{" "}
                       ₸
                     </span>
@@ -562,7 +532,7 @@ export default function ScootPage({ params }: { params: { id: string } }) {
 
         {/* Similar Motorcycles */}
         <section className="mt-16">
-          <h2 className="font-rubik font-bold text-3xl text-white mb-8">ПОХОЖИЕ</h2>
+          <h2 className="font-rubik font-bold text-3xl text-gray-900 mb-8">ПОХОЖИЕ</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {similarMotorcycles.map((motorcycle) => (
               <MotorcycleCard key={motorcycle.id} {...motorcycle} />

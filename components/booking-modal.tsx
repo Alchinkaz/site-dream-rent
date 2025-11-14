@@ -81,19 +81,11 @@ export function BookingModal({ isOpen, onClose, motorcycle, bookingData }: Booki
         }
       }}
     >
-      <div
-        className="w-full max-w-lg rounded-2xl relative"
-        style={{
-          backgroundColor: "#0f0f10",
-          maxHeight: "90vh",
-          overflow: "hidden",
-        }}
-      >
+      <div className="w-full max-w-lg rounded-2xl relative bg-white max-h-[90vh] overflow-hidden shadow-xl">
         {/* Scrollable content with hidden scrollbar */}
         <div
-          className="overflow-y-auto p-8"
+          className="overflow-y-auto p-8 max-h-[90vh]"
           style={{
-            maxHeight: "90vh",
             scrollbarWidth: "none", // Firefox
             msOverflowStyle: "none", // IE and Edge
           }}
@@ -106,18 +98,15 @@ export function BookingModal({ isOpen, onClose, motorcycle, bookingData }: Booki
           {/* Close Button (removed) */}
           {/* Header */}
           <div className="mb-8">
-            <h1 className="font-rubik font-bold text-3xl text-white mb-4">Бронирование</h1>
+            <h1 className="font-rubik font-bold text-3xl text-gray-900 mb-4">Бронирование</h1>
 
             <div className="mb-4">
-              <span
-                className="inline-block px-3 py-1 rounded-full text-sm font-medium"
-                style={{ backgroundColor: "#1a1a1b", color: "#9ca3af" }}
-              >
+              <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-700">
                 {motorcycle.category}
               </span>
             </div>
 
-            <h2 className="font-rubik font-bold text-xl text-white">
+            <h2 className="font-rubik font-bold text-xl text-gray-900">
               {motorcycle.name.toUpperCase()}, {motorcycle.year}
             </h2>
           </div>
@@ -125,45 +114,45 @@ export function BookingModal({ isOpen, onClose, motorcycle, bookingData }: Booki
           {/* Booking Details */}
           <div className="space-y-4 mb-8">
             <div className="flex justify-between items-center">
-              <span className="text-gray-300">Шлем:</span>
-              <span className="text-white">1 {motorcycle.helmet}</span>
+              <span className="text-gray-700">Шлем:</span>
+              <span className="text-gray-900">1 {motorcycle.helmet}</span>
             </div>
 
             <div className="flex justify-between items-start">
-              <span className="text-gray-300">Депозит:</span>
+              <span className="text-gray-700">Депозит:</span>
               <div className="text-right">
-                <div className="text-white font-semibold">{motorcycle.deposit.toLocaleString()} ₸</div>
-                <div className="text-gray-400 text-sm">(Оплачивается в момент выдачи)</div>
+                <div className="text-gray-900 font-semibold">{motorcycle.deposit.toLocaleString()} ₸</div>
+                <div className="text-gray-500 text-sm">(Оплачивается в момент выдачи)</div>
               </div>
             </div>
 
-            <div className="border-t pt-4" style={{ borderColor: "#2a2a2b" }}>
+            <div className="border-t border-gray-200 pt-4">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-gray-300">Старт аренды:</span>
-                <span className="text-white">
+                <span className="text-gray-700">Старт аренды:</span>
+                <span className="text-gray-900">
                   {bookingData.date ? format(bookingData.date, "dd.MM.yyyy", { locale: ru }) : "Не выбрано"} |{" "}
                   {bookingData.time || "Не выбрано"}
                 </span>
               </div>
 
               <div className="flex justify-between items-center mb-2">
-                <span className="text-gray-300">Окончание аренды:</span>
-                <span className="text-white">
+                <span className="text-gray-700">Окончание аренды:</span>
+                <span className="text-gray-900">
                   {bookingData.date ? format(bookingData.date, "dd.MM.yyyy", { locale: ru }) : "Не выбрано"} |{" "}
                   {getEndTime()}
                 </span>
               </div>
 
               <div className="flex justify-between items-center">
-                <span className="text-gray-300">Стоимость аренды:</span>
-                <span className="text-white font-semibold">{totalPrice.toLocaleString()} ₸</span>
+                <span className="text-gray-700">Стоимость аренды:</span>
+                <span className="text-gray-900 font-semibold">{totalPrice.toLocaleString()} ₸</span>
               </div>
             </div>
 
-            <div className="border-t pt-4" style={{ borderColor: "#2a2a2b" }}>
+            <div className="border-t border-gray-200 pt-4">
               <div className="flex justify-between items-center">
-                <span className="text-white font-bold text-lg">Итого:</span>
-                <span className="text-white font-bold text-lg">{totalPrice.toLocaleString()} ₸</span>
+                <span className="text-gray-900 font-bold text-lg">Итого:</span>
+                <span className="text-gray-900 font-bold text-lg">{totalPrice.toLocaleString()} ₸</span>
               </div>
             </div>
           </div>
@@ -176,11 +165,7 @@ export function BookingModal({ isOpen, onClose, motorcycle, bookingData }: Booki
                 placeholder="Имя *"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                className="w-full px-4 py-4 rounded-lg border text-white placeholder-gray-400 focus:outline-none focus:border-red-600 transition-colors"
-                style={{
-                  backgroundColor: "#1a1a1b",
-                  borderColor: "#2a2a2b",
-                }}
+                className="w-full px-4 py-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-600 transition-colors"
               />
             </div>
 
@@ -190,11 +175,7 @@ export function BookingModal({ isOpen, onClose, motorcycle, bookingData }: Booki
                 placeholder="Телефон *"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
-                className="w-full px-4 py-4 rounded-lg border text-white placeholder-gray-400 focus:outline-none focus:border-red-600 transition-colors"
-                style={{
-                  backgroundColor: "#1a1a1b",
-                  borderColor: "#2a2a2b",
-                }}
+                className="w-full px-4 py-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-600 transition-colors"
               />
             </div>
 

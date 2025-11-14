@@ -40,25 +40,14 @@ function CustomSelect({ value, onValueChange, placeholder, options }: CustomSele
     <div className="relative" ref={selectRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full h-14 text-white font-medium px-6 rounded-lg border transition-colors flex items-center justify-between"
-        style={{
-          backgroundColor: "#1a1a1b",
-          borderColor: "#2a2a2b",
-          ":hover": { backgroundColor: "#2a2a2b" },
-        }}
+        className="w-full h-14 text-gray-900 font-medium px-6 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-colors flex items-center justify-between"
       >
         <span>{value || placeholder}</span>
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
       {isOpen && (
-        <div
-          className="absolute top-full left-0 right-0 mt-1 border rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto"
-          style={{
-            backgroundColor: "#0f0f10",
-            borderColor: "#1a1a1b",
-          }}
-        >
+        <div className="absolute top-full left-0 right-0 mt-1 border border-gray-200 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto bg-white">
           {options.map((option) => (
             <button
               key={option}
@@ -66,8 +55,7 @@ function CustomSelect({ value, onValueChange, placeholder, options }: CustomSele
                 onValueChange(option)
                 setIsOpen(false)
               }}
-              className="w-full px-4 py-3 text-left text-white hover:bg-gray-700 transition-colors first:rounded-t-lg last:rounded-b-lg"
-              style={{ ":hover": { backgroundColor: "#1a1a1b" } }}
+              className="w-full px-4 py-3 text-left text-gray-900 hover:bg-gray-100 transition-colors first:rounded-t-lg last:rounded-b-lg"
             >
               {option}
             </button>
@@ -109,21 +97,15 @@ export function MotorcycleFilters({ onFiltersChange }: FiltersProps) {
 
   return (
     <div className="relative">
-      <div
-        className="backdrop-blur-sm border rounded-2xl p-6 lg:p-8"
-        style={{
-          backgroundColor: "rgba(15, 15, 16, 0.5)",
-          borderColor: "#1a1a1b",
-        }}
-      >
+      <div className="backdrop-blur-sm border border-gray-200 rounded-2xl p-6 lg:p-8 bg-white/95 shadow-lg">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4">
-          <h2 className="font-rubik font-bold text-2xl lg:text-3xl text-white leading-tight">
+          <h2 className="font-rubik font-bold text-2xl lg:text-3xl text-gray-900 leading-tight">
             Выбери мотоцикл на нужные даты
           </h2>
           <Button
             variant="ghost"
             onClick={resetFilters}
-            className="text-white hover:text-red-600 flex items-center space-x-2 self-start sm:self-center flex-shrink-0"
+            className="text-gray-700 hover:text-red-600 flex items-center space-x-2 self-start sm:self-center flex-shrink-0"
           >
             <span className="text-sm sm:text-base">СБРОСИТЬ ФИЛЬТР</span>
             <RotateCcw className="w-4 h-4" />
@@ -133,27 +115,15 @@ export function MotorcycleFilters({ onFiltersChange }: FiltersProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           <Popover>
             <PopoverTrigger asChild>
-              <Button
-                className="text-white font-medium border justify-start text-left h-14"
-                style={{
-                  backgroundColor: "#1a1a1b",
-                  borderColor: "#2a2a2b",
-                }}
-              >
-                <Calendar className="w-5 h-5 mr-3" />
+              <Button className="text-gray-900 font-medium border border-gray-300 bg-white hover:bg-gray-50 justify-start text-left h-14">
+                <Calendar className="w-5 h-5 mr-3 text-gray-600" />
                 <div>
-                  <div className="text-xs text-gray-400 uppercase">Дата получения</div>
+                  <div className="text-xs text-gray-500 uppercase">Дата получения</div>
                   <div className="text-sm">{date ? format(date, "dd.MM.yyyy", { locale: ru }) : "Выберите дату"}</div>
                 </div>
               </Button>
             </PopoverTrigger>
-            <PopoverContent
-              className="w-auto p-0 border"
-              style={{
-                backgroundColor: "#0f0f10",
-                borderColor: "#1a1a1b",
-              }}
-            >
+            <PopoverContent className="w-auto p-0 border border-gray-200 bg-white">
               <CalendarComponent
                 mode="single"
                 selected={date}
@@ -161,29 +131,28 @@ export function MotorcycleFilters({ onFiltersChange }: FiltersProps) {
                 initialFocus
                 locale={ru}
                 weekStartsOn={1}
-                className="text-white"
-                style={{ backgroundColor: "#0f0f10" }}
+                className="text-gray-900"
                 classNames={{
                   months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
                   month: "space-y-4",
-                  caption: "flex justify-center pt-1 relative items-center text-white",
-                  caption_label: "text-sm font-medium text-white",
+                  caption: "flex justify-center pt-1 relative items-center text-gray-900",
+                  caption_label: "text-sm font-medium text-gray-900",
                   nav: "space-x-1 flex items-center",
-                  nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 text-white",
+                  nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 text-gray-900",
                   nav_button_previous: "absolute left-1",
                   nav_button_next: "absolute right-1",
                   table: "w-full border-collapse space-y-1",
                   head_row: "flex",
-                  head_cell: "text-gray-400 rounded-md w-9 font-normal text-[0.8rem]",
+                  head_cell: "text-gray-500 rounded-md w-9 font-normal text-[0.8rem]",
                   row: "flex w-full mt-2",
-                  cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-gray-700 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-                  day: "h-9 w-9 p-0 font-normal text-white hover:bg-gray-700 hover:text-white rounded-md",
+                  cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-gray-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+                  day: "h-9 w-9 p-0 font-normal text-gray-900 hover:bg-gray-100 hover:text-gray-900 rounded-md",
                   day_selected:
                     "bg-red-600 text-white hover:bg-red-600 hover:text-white focus:bg-red-600 focus:text-white",
-                  day_today: "bg-gray-700 text-white",
-                  day_outside: "text-gray-500 opacity-50",
-                  day_disabled: "text-gray-500 opacity-50",
-                  day_range_middle: "aria-selected:bg-gray-700 aria-selected:text-white",
+                  day_today: "bg-gray-100 text-gray-900",
+                  day_outside: "text-gray-400 opacity-50",
+                  day_disabled: "text-gray-400 opacity-50",
+                  day_range_middle: "aria-selected:bg-gray-100 aria-selected:text-gray-900",
                   day_hidden: "invisible",
                 }}
               />

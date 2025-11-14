@@ -16,13 +16,7 @@ interface MotorcycleCardProps {
 
 export function MotorcycleCard({ id, name, year, price, image, power, volume, available }: MotorcycleCardProps) {
   return (
-    <div
-      className="rounded-xl overflow-hidden border hover:border-gray-600 transition-colors"
-      style={{
-        backgroundColor: "#0f0f10",
-        borderColor: "#1a1a1b",
-      }}
-    >
+    <div className="rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all bg-white">
       <Link href={`/scoots/${id}`}>
         <div className="relative aspect-[4/3] overflow-hidden">
           <Image
@@ -41,7 +35,7 @@ export function MotorcycleCard({ id, name, year, price, image, power, volume, av
 
       <div className="p-4">
         <Link href={`/scoots/${id}`}>
-          <h3 className="font-rubik font-bold text-lg text-white mb-3 hover:text-red-600 transition-colors">
+          <h3 className="font-rubik font-bold text-lg text-gray-900 mb-3 hover:text-red-600 transition-colors">
             {name.toUpperCase()}, {year}
           </h3>
         </Link>
@@ -49,20 +43,20 @@ export function MotorcycleCard({ id, name, year, price, image, power, volume, av
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-1">
-              <Gauge className="w-4 h-4 text-white" />
-              <span className="text-sm text-gray-300">{power}</span>
+              <Gauge className="w-4 h-4 text-gray-600" />
+              <span className="text-sm text-gray-700">{power}</span>
             </div>
             <div className="flex items-center space-x-1">
-              <Settings className="w-4 h-4 text-white" />
-              <span className="text-sm text-gray-300">{volume}</span>
+              <Settings className="w-4 h-4 text-gray-600" />
+              <span className="text-sm text-gray-700">{volume}</span>
             </div>
           </div>
         </div>
 
         <div className="flex items-center justify-between mb-4">
           <div>
-            <span className="text-2xl font-bold text-white">от {price.toLocaleString()} ₸</span>
-            <span className="text-sm text-gray-400 ml-1">/ 4 часа</span>
+            <span className="text-2xl font-bold text-gray-900">от {price.toLocaleString()} ₸</span>
+            <span className="text-sm text-gray-500 ml-1">/ 4 часа</span>
           </div>
         </div>
 

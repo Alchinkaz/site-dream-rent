@@ -135,16 +135,11 @@ export default function ScootsPage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#0a0a0a" }}>
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section
-        className="relative min-h-screen flex items-center"
-        style={{
-          background: "linear-gradient(135deg, #0a0a0a 0%, #0f0f10 50%, #0a0a0a 100%)",
-        }}
-      >
+      <section className="relative min-h-screen flex items-center bg-gradient-to-b from-gray-50 to-white">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <h1 className="font-rubik font-bold text-4xl lg:text-6xl text-white text-center mb-8">
+          <h1 className="font-rubik font-bold text-4xl lg:text-6xl text-gray-900 text-center mb-8">
             Прокат мотоциклов <span className="text-red-600">в Алмате</span>
           </h1>
           <MotorcycleFilters onFiltersChange={handleFiltersChange} />
@@ -152,7 +147,7 @@ export default function ScootsPage() {
       </section>
 
       {/* Motorcycles Grid */}
-      <section className="py-16" style={{ backgroundColor: "#0a0a0a" }}>
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredMotorcycles.map((motorcycle) => (
@@ -162,7 +157,7 @@ export default function ScootsPage() {
 
           {filteredMotorcycles.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-gray-400 text-lg">По вашим критериям мотоциклы не найдены</p>
+              <p className="text-gray-600 text-lg">По вашим критериям мотоциклы не найдены</p>
             </div>
           )}
         </div>
