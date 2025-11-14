@@ -223,9 +223,9 @@ export default function Home() {
               <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Мопеды</h3>
                 <p className="text-sm text-gray-600 mb-4">Удобный транспорт для городских поездок</p>
-                <button className="mt-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200">
+                <a href="/scoots" className="mt-auto bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 text-center block">
                   Смотреть предложения
-                </button>
+                </a>
               </div>
             </div>
 

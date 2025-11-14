@@ -29,7 +29,7 @@ export default function Navbar() {
       dropdown: [
         { href: "#apartments", label: "Квартиры" },
         { href: "#cars", label: "Машины" },
-        { href: "#mopeds", label: "Мопеды" },
+        { href: "/scoots", label: "Мопеды" },
         { href: "#electric-bikes", label: "Электро байки" },
         { href: "#enduro", label: "Эндуро" },
         { href: "#snowmobiles", label: "Снегоходы" },
