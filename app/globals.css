@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14% 4.1%; /* Dark gray from palette */
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 4.1%;
+
+    --primary: 0 84% 60%; /* Red primary #DC2626 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 20 6% 90%; /* Light gray #E7E5E4 */
+    --secondary-foreground: 20 14% 4.1%;
+
+    --muted: 20 6% 90%;
+    --muted-foreground: 25 5% 45%; /* Medium gray #57534E */
+
+    --accent: 38 92% 50%; /* Orange accent #F59E0B */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%; /* Red destructive */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 6% 90%; /* Light gray border */
+    --input: 20 6% 90%;
+    --ring: 38 92% 50%; /* Orange ring */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14% 4.1%; /* Dark background #1C1917 */
+    --foreground: 20 6% 90%; /* Light foreground */
+
+    --card: 24 10% 10%; /* Card background #292524 */
+    --card-foreground: 20 6% 90%;
+
+    --popover: 24 10% 10%;
+    --popover-foreground: 20 6% 90%;
+
+    --primary: 0 84% 60%; /* Red primary */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 24 10% 10%; /* Dark secondary */
+    --secondary-foreground: 20 6% 90%;
+
+    --muted: 24 10% 10%;
+    --muted-foreground: 25 5% 45%;
+
+    --accent: 38 92% 50%; /* Orange accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 25 5% 45%; /* Medium gray border */
+    --input: 25 5% 45%;
+    --ring: 38 92% 50%; /* Orange ring */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Apply Rubik to all headings using font-rubik class */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-rubik, sans-serif);
+    letter-spacing: -0.02em;
+  }
+
+  /* Hide scrollbar but keep scroll functionality */
+  /* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for Firefox */
+  html {
+    scrollbar-width: none;
+  }
+
+  /* Ensure scrolling still works */
+  html,
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Hide default details marker on mobile only */
+  @media (max-width: 768px) {
+    summary::-webkit-details-marker {
+      display: none;
+    }
+  }
+}
